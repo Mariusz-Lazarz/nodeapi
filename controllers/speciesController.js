@@ -1,8 +1,7 @@
-const { Film } = require("../models/filmModel.js");
 const generalController = require("./generalController.js");
 
-const getAllSpecies = generalController.getAll(undefined, "species");
-const getOneSpecie = generalController.getOne(undefined, "species");
+const getAllSpecies = generalController.getAll("species");
+const getOneSpecie = generalController.getOne("species");
 
 module.exports = {
   getAllSpecies,
