@@ -4,9 +4,19 @@ const app = express(); // initilizing app
 
 // importing routers
 const filmRouter = require("./routes/filmRoutes");
+const peopleRouter = require("./routes/peopleRoutes");
+const planetsRouter = require("./routes/planetsRoutes");
+const speciesRouter = require("./routes/speciesRoutes");
+const starshipsRouter = require("./routes/starshipsRoutes");
+const vehiclesRouter = require("./routes/vehiclesRoutes");
 
 // use router
 app.use("/api/v1/films", filmRouter);
+app.use("/api/v1/people", peopleRouter);
+app.use("/api/v1/planets", planetsRouter);
+app.use("/api/v1/species", speciesRouter);
+app.use("/api/v1/starships", starshipsRouter);
+app.use("/api/v1/vehicles", vehiclesRouter);
 
 // handling unused routes
 app.all("*", (req, res, next) => {
