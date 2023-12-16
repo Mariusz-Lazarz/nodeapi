@@ -1,24 +1,16 @@
-const countPairs = (description) => {
-  const pairs = {};
-  const wordsArray = description.split(/\s+|\r\n/);
+const countPairs = (filmData) => {
+  const openings = filmData.map((film) => film.opening_crawl).join(" ");
+  const formatedOpenings = openings
+    .split(/\s+|\r\n/)
+    .map((word) => word.toLowerCase())
+    .map((word) => word.replace(/['.,!?]+$/g, ""))
+    .map((word) => (word.endsWith("'s") ? word.slice(0, -2) : word))
+    .filter((word) => word.length > 0);
 
-  for (const word of wordsArray) {
-    let lowercaseWord = word.toLowerCase();
-    // Ignore dots and commas at the end of the word
-    lowercaseWord = lowercaseWord.replaceAll(/['.,!?]+$/g, "");
-    // Ignore apostrophes
-    if (lowercaseWord.endsWith("'s")) {
-      lowercaseWord = lowercaseWord.slice(0, -2);
-    }
-
-    if (pairs[lowercaseWord]) {
-      pairs[lowercaseWord]++;
-    } else {
-      pairs[lowercaseWord] = 1;
-    }
-  }
-  
-  return pairs;
+  return formatedOpenings.reduce((pairs, word) => {
+    pairs[word] = (pairs[word] || 0) + 1;
+    return pairs;
+  }, {});
 };
 
 module.exports = countPairs;

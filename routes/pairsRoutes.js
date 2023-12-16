@@ -1,7 +1,7 @@
 const express = require("express");
-const pairsController = require("../controllers/parisController");
+const pairsController = require("../controllers/parisAndNamesController");
 const router = express.Router();
 
-router.route("/").get(pairsController.getAllPairs);
+router.route("/").get(pairsController.getAllPairsAndNames);
 
 module.exports = router;

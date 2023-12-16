@@ -17,7 +17,7 @@ app.use("/api/v1/planets", planetsRouter);
 app.use("/api/v1/species", speciesRouter);
 app.use("/api/v1/starships", starshipsRouter);
 app.use("/api/v1/vehicles", vehiclesRouter);
-app.use("/api/v1/pairs", pairsRouter);
+app.use("/api/v1/pairsAndNames", pairsRouter);
 
 // handling unused routes
 app.all("*", (req, res, next) => {
