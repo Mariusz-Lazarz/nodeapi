@@ -5,7 +5,7 @@ const countPairs = (description) => {
   for (const word of wordsArray) {
     let lowercaseWord = word.toLowerCase();
     // Ignore dots and commas at the end of the word
-    lowercaseWord = lowercaseWord.replace(/['.,]$/, "");
+    lowercaseWord = lowercaseWord.replaceAll(/['.,!?]+$/g, "");
     // Ignore apostrophes
     if (lowercaseWord.endsWith("'s")) {
       lowercaseWord = lowercaseWord.slice(0, -2);
