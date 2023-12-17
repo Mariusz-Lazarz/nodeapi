@@ -10,9 +10,9 @@ const getAllPairsAndNames = async (req, res) => {
     const peopleUrl = `https://swapi.dev/api/people`;
     const filmData = await cacheData(filmsCacheKey, filmsUrl);
     const peopleData = await cacheData(peopleCacheKey, peopleUrl, true);
-    const countedPairs = countPairs(filmData);
+    const countedPairs = countPairs(filmData.results);
     const mostFrequentCharacter = getMostFrequentCharacter(
-      filmData,
+      filmData.results,
       peopleData
     );
 

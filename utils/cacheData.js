@@ -26,13 +26,20 @@ const cacheData = async (cacheKey, url, getAllData = false) => {
       }
     } else {
       const pageData = await fetchData(url);
-      data = pageData.results;
+      data = pageData;
     }
 
     if (cachedData) {
-      await Cache.updateOne({ key: cacheKey }, { data: data, timestamp: new Date() });
+      await Cache.updateOne(
+        { key: cacheKey },
+        { data: data, timestamp: new Date() }
+      );
     } else {
-      await new Cache({ key: cacheKey, data: data, timestamp: new Date() }).save();
+      await new Cache({
+        key: cacheKey,
+        data: data,
+        timestamp: new Date(),
+      }).save();
     }
 
     return data;
