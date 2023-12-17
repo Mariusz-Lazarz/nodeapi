@@ -9,7 +9,7 @@ exports.getAll = (resource) => async (req, res) => {
     }`;
 
     const data = await cacheData(cacheKey, url);
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({
       status: "Fail",
@@ -25,7 +25,7 @@ exports.getOne = (resource) => async (req, res) => {
     const url = `https://swapi.dev/api/${resource}/${id}`;
 
     const data = await cacheData(cacheKey, url);
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({
       status: "Fail",

@@ -16,7 +16,7 @@ const getAllPairsAndNames = async (req, res) => {
       peopleData
     );
 
-    res.json({ mostFrequentCharacter, countedPairs });
+    res.status(200).json({ mostFrequentCharacter, countedPairs });
   } catch (error) {
     console.log(error);
     res.status(500).json({
