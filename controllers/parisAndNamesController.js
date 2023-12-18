@@ -26,4 +26,4 @@ const getAllPairsAndNames = async (req, res) => {
   }
 };
 
-module.exports = { getAllPairsAndNames };
+module.exports = getAllPairsAndNames;
