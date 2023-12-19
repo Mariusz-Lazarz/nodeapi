@@ -1,6 +1,10 @@
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
 const express = require("express"); // importing express
-
 const app = express(); // initilizing app
+
+// Load the Swagger YAML file
+const swaggerSpec = YAML.load("./swagger.yaml");
 
 // importing routers
 const filmRouter = require("./routes/filmRoutes");
@@ -11,6 +15,7 @@ const starshipsRouter = require("./routes/starshipsRoutes");
 const vehiclesRouter = require("./routes/vehiclesRoutes");
 const pairsRouter = require("./routes/pairsRoutes");
 // use router
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/v1/films", filmRouter);
 app.use("/api/v1/people", peopleRouter);
 app.use("/api/v1/planets", planetsRouter);

@@ -3,7 +3,7 @@ const cacheData = require("../utils/cacheData");
 exports.getAll = (resource) => async (req, res) => {
   try {
     const page = req.query.page;
-    const cacheKey = `${resource}-${page}`;
+    const cacheKey = `${resource}-page${page}`;
     const url = `https://swapi.dev/api/${resource}/${
       page ? `?page=${page}` : ""
     }`;
@@ -21,7 +21,7 @@ exports.getAll = (resource) => async (req, res) => {
 exports.getOne = (resource) => async (req, res) => {
   try {
     const id = req.params.id;
-    const cacheKey = `${resource}-${id}`;
+    const cacheKey = `${resource}-id${id}`;
     const url = `https://swapi.dev/api/${resource}/${id}`;
 
     const data = await cacheData(cacheKey, url);
