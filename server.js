@@ -17,5 +17,7 @@ async function connectToDatabase() {
 connectToDatabase();
 
 app.listen(port, () => {
-  console.log(`App running at port ${port}`);
+  console.log(
+    `App running at port ${port} \nAPI docs are avaliable here http://localhost:3000/api-docs/`
+  );
 });
